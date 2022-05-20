@@ -7,12 +7,12 @@ export default function Card({max, min, name, img, onClose}) {
       <button onClick={onClose}>X</button>
 
       <h4>{name}</h4>
-      <p>Max</p>
+      <p>Máx</p>
       <p>{max}</p>
       <p>Min</p>
       <p>{min}</p>
       
-      <img src={`http://openweathermap.org/img/wn/${img}@2x.png`} alt="Img not found" />
+      <img src={`http://openweathermap.org/img/wn/${img}@2x.png`} alt="Img not found"/>
       
     </div>
   )
