@@ -4,22 +4,33 @@ import React, { useState } from 'react';
 
 function DinamicInputs() {  
   const modeloFamiliar = { nombre: '' };
+  const [familiar, setFamiliar] = useState([]); // PARA QUE NO ME MUESTRE FAMILIAR #1
+
+/* ME MUESTRA FAMILIAR #1:TGFYFYFO¿D
+function DinamicInputs() {  ´}
+  const modeloFamiliar = { nombre: '' };
   const [familiar, setFamiliar] = useState([
-    { ...modeloFamiliar },
-  ]);
+    { ...modeloFamiliar }, // familiar = [{nombre: ""}]
+  ]); 
+*/
+
 
   const [persona, setPersona] = useState({
-    nombre: '',
+    nombre: '', // persona {nombre: ""}
   });
 
   const agregaFamiliar = () => {
-      setFamiliar([...familiar, { ...modeloFamiliar }]);
+      setFamiliar([...familiar, { ...persona }]); // toma la info que tenia familiar y agrega uno nuevo
+      setPersona({nombre:""})
   };
+
+
 
   const handlePersonaChange = (e) => setPersona({
     ...persona,
-    [e.target.name]: e.target.value,
+    [e.target.name]: e.target.value, // nombre: e.target.value --> nombre: "melina"
   });
+  // una copia del objeto entero "persona" y sobreescribí el valor que está entre []
 
   const handleFamiliarChange = (e) => {
     const familiares = [...familiar];
@@ -27,7 +38,7 @@ function DinamicInputs() {
     setFamiliar(familiares);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = e => {C
     e.preventDefault()
     console.log(familiar)
   }

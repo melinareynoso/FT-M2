@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
 export default function Form() {
+    // const [input,setInput] = useState({username:"",password:""});
+    // input = {username, password}  -> mas limpio que lo de abajo 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -12,8 +14,17 @@ export default function Form() {
     }
     setUsername(value);
   }
+
+  let onSubmit = (e) => {
+    e.preventDefault(); // evitamos el comportamiento que tiene por default el evento onSubmit 
+                        //(no se va a recargar la pagina)
+    console.log(username);
+    console.log(password);
+    console.log(error);
+  }
+
   return (
-      <form>
+      <form onSubmit={onSubmit}>
         <input className={error && 'danger'}
           name="username" value={username} placeholder="username" onChange={(e) => validateUser(e.target.value)}/>
         {!error ? null : <span>{error}</span>}
