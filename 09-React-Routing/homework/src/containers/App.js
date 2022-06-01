@@ -14,6 +14,9 @@ function App() {
   function onClose(id) {
     setCities(oldCities => oldCities.filter(c => c.id !== id));
   }
+
+  // [1: cba, 2: parana, 3: rosario] -> [2: parana, 3: rosario]
+
   function onSearch(ciudad) {
     //Llamado a la API del clima
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric`)

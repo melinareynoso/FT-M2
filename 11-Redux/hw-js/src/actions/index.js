@@ -1,15 +1,43 @@
-const { INCREMENTO, DECREMENTO } = require('../action-types');
+const { INCREMENTO, DECREMENTO, INCREMENTOIMPAR } = require('../action-types');
 
 // Nuestras actions (action creators) devolverán un paquete de actions que nuestro reducer recibirá. 
 // ¿Cómo es el paquete de acción? Tengan en cuenta que el creador de la acción no es en absoluto responsable 
 // de manejar ninguna de las lógicas actuales de actualización del store central de Redux.
 // Eso se lo deja al reducer(s).
 
-const incremento = null;
+const incremento = () => {
+  return {type: INCREMENTO};
+};
 
-const decremento = null;
+// function INCREMENTO(){
+//   return {
+//   type: "INCREMENTO",
+//   }
+// };
+
+const decremento = () => {
+  return {type: DECREMENTO};
+};
+
+// function DECREMENTO(){
+//   return {
+//   type: "DECREMENTO",
+//   }
+// };
+
+const incrementoImpar = () => {
+  return {type: INCREMENTOIMPAR};
+};
+
+const incrementoAsync = () => {
+  return (dispatch) => {
+    setTimeout(() => dispatch(incremento()), 1500);
+  };
+};
 
 module.exports = {
   incremento,
-  decremento
+  decremento,
+  incrementoImpar,
+  incrementoAsync
 }

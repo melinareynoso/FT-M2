@@ -1,4 +1,4 @@
-const { INCREMENTO, DECREMENTO } = require('../action-types');
+const { INCREMENTO, DECREMENTO, INCREMENTOIMPAR } = require('../action-types');
 
 const initialState = {
   contador: 0
@@ -9,7 +9,27 @@ const initialState = {
 // ¿Qué tiene que hacer el reducer con el contador de cada caso?
 
 function contador(state = initialState, action) {
-  
+  switch (action.type) {
+    case INCREMENTO:
+      return {
+        ...state, contador: state.contador + 1
+      };
+    case DECREMENTO:
+      return {
+        ...state, contador: state.contador - 1
+      };
+    case INCREMENTOIMPAR: {
+      return state.contador % 2 === 1
+      ? {...state, contador: state.contador + 1} 
+      : {...state};
+    }
+    default:
+      return {
+        ...state
+      }
+  }
 }
+  
+
 
 module.exports = contador;
